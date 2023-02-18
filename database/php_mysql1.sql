@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th2 04, 2023 lúc 02:20 AM
+-- Thời gian đã tạo: Th2 18, 2023 lúc 09:52 AM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.1.12
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Cơ sở dữ liệu: `php_mysql1`
 --
-CREATE DATABASE IF NOT EXISTS `php_mysql1` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `php_mysql1`;
 
 -- --------------------------------------------------------
 
@@ -157,7 +155,8 @@ CREATE TABLE `dangky` (
 INSERT INTO `dangky` (`id_dangky`, `tenkhachhang`, `email`, `diachi`, `matkhau`, `dienthoai`) VALUES
 (1, 'Hùng Nguyễn', 'hung@gmail.com', 'Cần Thơ', '900150983cd24fb0d6963f7d28e17f72', '0123456789'),
 (2, 'admin123', 'admin123@gmail.com', 'An Giang', '202cb962ac59075b964b07152d234b70', '0123456789'),
-(7, 'Hùng', 'hung123@gmail.com', 'An Giang', '202cb962ac59075b964b07152d234b70', '0123456789');
+(7, 'Hùng', 'hung123@gmail.com', 'An Giang', '202cb962ac59075b964b07152d234b70', '0123456789'),
+(8, '', '', '', 'd41d8cd98f00b204e9800998ecf8427e', '');
 
 -- --------------------------------------------------------
 
@@ -176,9 +175,11 @@ CREATE TABLE `danhmuc` (
 --
 
 INSERT INTO `danhmuc` (`id_danhmuc`, `tendanhmuc`, `thutu`) VALUES
-(7, 'Chuột máy tính', 1),
-(8, 'Tai nghe', 2),
-(9, 'Ốp lưng', 3);
+(10, 'Iphone', 4),
+(11, 'Samsung', 5),
+(12, 'Oppo', 6),
+(13, 'Nokia', 6),
+(14, 'Vivo', 7);
 
 -- --------------------------------------------------------
 
@@ -197,9 +198,8 @@ CREATE TABLE `danhmucbaiviet` (
 --
 
 INSERT INTO `danhmucbaiviet` (`id_baiviet`, `tendanhmuc_baiviet`, `thutu`) VALUES
-(2, 'Tin bóng đá', 1),
-(3, 'Tin thời sự', 2),
-(4, 'Python', 3);
+(5, 'Sự kiện', 1),
+(6, 'Mẹo hay', 2);
 
 -- --------------------------------------------------------
 
@@ -243,18 +243,19 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`id_sanpham`, `tensanpham`, `masp`, `giasp`, `soluong`, `hinhanh`, `tomtat`, `noidung`, `tinhtrang`, `id_danhmuc`) VALUES
-(23, 'Tai nghe 1', '001', '2500000', 3, '1671926787 tainghe1.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 1, 8),
-(24, 'Tai nghe 2', '002', '2500000', 3, '1671926939 tainghe2.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 1, 8),
-(25, 'Tai nghe 3', '003', '2500000', 3, '1671926927 tainghe3.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 1, 8),
-(26, 'Tai nghe 4', '004', '2500000', 3, '1671926887 tainghe4.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 1, 8),
-(27, 'Chuột 1', '005', '2500000', 3, '1671926973 chuot1.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 1, 7),
-(28, 'Chuột 2', '006', '2500000', 3, '1671927000 chuot2.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 1, 7),
-(29, 'Chuột 3', '007', '2500000', 3, '1671927029 chuot3.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 1, 7),
-(30, 'Chuột 4', '008', '2500000', 3, '1671927057 chuot4.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 1, 7),
-(31, 'Ốp lưng 1', '009', '2500000', 3, '1671927077 oplung_1.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 1, 9),
-(32, 'Ốp lưng 2', '010', '2500000', 3, '1671927095 oplung2.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 1, 9),
-(33, 'Ốp lưng 3', '011', '2500000', 3, '1671927108 oplung3.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 1, 9),
-(34, 'Ốp lưng 4', '012', '2500000', 3, '1671927121 oplung4.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 1, 9);
+(23, 'Điện thoại Vivo Y15s', 'VV001', '2710000', 3, '1675511697 vivo-y15s-2021-(20).jpg', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', 1, 14),
+(24, 'Điện thoại Nokia G11', 'NK002', '2990000', 3, '1675511613 Nokia-g11-xám-thumb-600x600.jpg', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', 1, 13),
+(25, 'Điện thoại Nokia G21', 'NK001', '3690000', 3, '1675511573 nokia-g21-xanh-thumb-600x600.jpg', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', 1, 13),
+(26, 'Điện thoại OPPO A55', 'OP002', '3950000', 3, '1675511266 oppo-a55-4g-(22).jpg', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', 1, 12),
+(27, 'Điện thoại OPPO Reno8 Pro 5G', 'OP001', '17990000', 3, '1675511220 oppo-reno8-pro-thumb-xanh-1-600x600.jpg', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', 1, 12),
+(28, 'Điện thoại Samsung Galaxy S22 Ultra 5G 512GB', 'SS002', '31990000', 3, '1675511456 samsung-galaxy-s22-ultra-512gb-(12).jpg', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', 1, 11),
+(29, 'Điện thoại Samsung Galaxy S22 Ultra 5G 128GB', 'SS001', '23990000', 3, '1675511401 samsung-galaxy-s22-ultra-(20).jpg', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', 1, 11),
+(30, 'Điện thoại iPhone 12 64GB', 'IP006', '15990000', 3, '1675510945 iphone-12-(52).jpg', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', 1, 10),
+(31, 'Điện thoại iPhone 14 Pro 128GB', 'IP005', '27290000', 3, '1675510708 iphone-14-pro-(52).jpg', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', 1, 10),
+(32, 'Điện thoại iPhone 13 Pro 1TB', 'IP004', '29990000', 3, '1675510502 iphone-13-pro-1tb-(38).jpg', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', 1, 10),
+(33, 'Điện thoại iPhone 11 64GB', 'IP003', '11490000', 3, '1675510342 iphone-11-(88).jpg', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\r\n', 1, 10),
+(34, 'Điện thoại iPhone 13 Pro Max 1TB', 'IP002', '34990000', 3, '1675510636 iphone-13-pro-max-1tb-(38).jpg', '', '', 1, 10),
+(35, 'Điện thoại iPhone 14 Pro 1TB', 'IP001', '37990000', 5, '1676050384 iphone-14-pro-1tb-(40).jpg', '<p>Ưu đ&atilde;i đặc biệt</p>\r\n\r\n<ul>\r\n	<li>Giảm ngay&nbsp;<strong>100.000Đ</strong>&nbsp;khi mua k&egrave;m tai nghe&nbsp;<strong><a href=\"https://onewaymobile.vn/in-ear/tai-nghe-apple-airpods-pro-2022-new100-dp838.html\">Airpods Pro 2</a></stro', '<p>TH&Ocirc;NG TIN SẢN PHẨM</p>\r\n\r\n<p>L&agrave; một trong những t&acirc;m điểm của sự kiện Far out ra mắt sản phẩm mới của Apple vừa qua,&nbsp;<strong>iPhone 14 Pro Max&nbsp;&nbsp;</strong>đ&atilde; thu h&uacute;t sự ch&uacute; &yacute; mạnh mẽ của đ&ocirc;ng đảo t&iacute;n đồ c&ocirc;ng nghệ. Với nhiều n&acirc;ng cấp về phần cứng cũng như thiết kế,&nbsp;<strong>iPhone 14 Pro Max</strong>&nbsp;xứng đ&aacute;ng l&agrave; mẫu flagship b&aacute;n chạy nhất trong năm nay.&nbsp;</p>\r\n\r\n<h2><strong>Thiết kế Dynamic Island cho trải nghiệm độc đ&aacute;o</strong></h2>\r\n\r\n<p>Thay đổi đ&aacute;ng ch&uacute; &yacute; nhất tr&ecirc;n d&ograve;ng<strong>&nbsp;iPhone 14 Pro/ 14 Pro Max</strong>&nbsp;kh&ocirc;ng thể kh&ocirc;ng kể đến nơi đặt cụm camera trước v&agrave; cảm biến. Năm nay m&agrave;n h&igrave;nh tai thỏ được chuyển th&agrave;nh m&agrave;n h&igrave;nh dạng chữ i nằm ngang gọi l&agrave; Dynamic Island, đ&acirc;y cũng l&agrave; nơi hiện th&ocirc;ng b&aacute;o mới, k&iacute;ch thước cụm &quot;Dynamic Island&quot; sẽ tự động thay đổi k&iacute;ch thước t&ugrave;y từng trường hợp. Bạn c&oacute; thể mở rộng bằng c&aacute;c thao t&aacute;c vuốt chạm, cũng như trở về m&agrave;n h&igrave;nh ch&iacute;nh khi cần thiết.</p>\r\n', 1, 10);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -270,19 +271,22 @@ ALTER TABLE `admin`
 -- Chỉ mục cho bảng `baiviet`
 --
 ALTER TABLE `baiviet`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_danhmuc` (`id_danhmuc`);
 
 --
 -- Chỉ mục cho bảng `cart`
 --
 ALTER TABLE `cart`
-  ADD PRIMARY KEY (`id_cart`);
+  ADD PRIMARY KEY (`id_cart`),
+  ADD KEY `id_khachhang` (`id_khachhang`);
 
 --
 -- Chỉ mục cho bảng `cart_details`
 --
 ALTER TABLE `cart_details`
-  ADD PRIMARY KEY (`id_cart_details`);
+  ADD PRIMARY KEY (`id_cart_details`),
+  ADD KEY `id_sanpham` (`id_sanpham`);
 
 --
 -- Chỉ mục cho bảng `dangky`
@@ -312,7 +316,8 @@ ALTER TABLE `lienhe`
 -- Chỉ mục cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  ADD PRIMARY KEY (`id_sanpham`);
+  ADD PRIMARY KEY (`id_sanpham`),
+  ADD KEY `id_danhmuc` (`id_danhmuc`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -328,7 +333,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT cho bảng `baiviet`
 --
 ALTER TABLE `baiviet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `cart`
@@ -346,19 +351,19 @@ ALTER TABLE `cart_details`
 -- AUTO_INCREMENT cho bảng `dangky`
 --
 ALTER TABLE `dangky`
-  MODIFY `id_dangky` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_dangky` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `danhmuc`
 --
 ALTER TABLE `danhmuc`
-  MODIFY `id_danhmuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_danhmuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT cho bảng `danhmucbaiviet`
 --
 ALTER TABLE `danhmucbaiviet`
-  MODIFY `id_baiviet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_baiviet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `lienhe`
@@ -370,7 +375,23 @@ ALTER TABLE `lienhe`
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `id_sanpham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_sanpham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- Các ràng buộc cho các bảng đã đổ
+--
+
+--
+-- Các ràng buộc cho bảng `cart_details`
+--
+ALTER TABLE `cart_details`
+  ADD CONSTRAINT `cart_details_ibfk_1` FOREIGN KEY (`id_sanpham`) REFERENCES `sanpham` (`id_sanpham`);
+
+--
+-- Các ràng buộc cho bảng `danhmuc`
+--
+ALTER TABLE `danhmuc`
+  ADD CONSTRAINT `danhmuc_ibfk_1` FOREIGN KEY (`id_danhmuc`) REFERENCES `sanpham` (`id_danhmuc`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
